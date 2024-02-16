@@ -10,25 +10,35 @@
 class PID {
 public:
 
-   /**
-   * TODO: Create the PID class
-   **/
+    /**
+    * TODO: Create the PID class
+    **/
 
     /*
     * Errors
     */
+    double P_cte;
+    double I_cte;
+    double D_cte;
+    double prev_cte;
 
     /*
     * Coefficients
     */
+    double Kp;
+    double Ki;
+    double Kd;
 
     /*
     * Output limits
     */
-  
+    double output_lim_max;
+    double output_lim_min;
+
     /*
     * Delta time
     */
+    float dt;
 
     /*
     * Constructor
@@ -43,7 +53,7 @@ public:
     /*
     * Initialize PID.
     */
-    void Init(double Kp, double Ki, double Kd, double output_lim_max, double output_lim_min);
+    void Init(double Kpi, double Kii, double Kdi, double output_lim_maxi, double output_lim_mini);
 
     /*
     * Update the PID error variables given cross track error.
@@ -62,5 +72,3 @@ public:
 };
 
 #endif //PID_CONTROLLER_H
-
-
