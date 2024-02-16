@@ -319,8 +319,7 @@ int main ()
           double dist_min;
           for (int i = 0; i < x_points.size(); ++i) {
                 // calc distance between planner points and vehicle position
-                double distance = pow((x_position - x_points[i]), 2) +
-                                  pow((y_position - y_points[i]), 2);
+                double distance = sqrt(pow((x_position - x_points[i]), 2) + pow((y_position - y_points[i]), 2);)
 
                 if (i == 0) {
                   dist_min = distance;
@@ -367,7 +366,7 @@ int main ()
           **/
           // modify the following line for step 2
           // the error_throttle is equal to the target velocity minus the actual velocity
-          error_throttle = v_points[index] - velocity;
+          error_throttle = velocity - v_points[index];
 
 
 
