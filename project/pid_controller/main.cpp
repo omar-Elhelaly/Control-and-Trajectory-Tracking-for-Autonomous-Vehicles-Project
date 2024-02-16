@@ -218,9 +218,9 @@ int main ()
   /**
   * TODO (Step 1): create pid (pid_steer) for steer command and initialize values
   **/
-  double Steer_Kp = 2;
-  double Steer_Ki = 0;
-  double Steer_Kd = 1;
+  double Steer_Kp = 0.2;
+  double Steer_Ki = 0.001;
+  double Steer_Kd = 0.02;
   double Steer_output_lim_max = 1.2;
   double Steer_output_lim_min = -1.2;
 
@@ -228,9 +228,9 @@ int main ()
   /**
   * TODO (Step 1): create pid (pid_throttle) for throttle command and initialize values
   **/
-  double Throt_Kp = 2;
-  double Throt_Ki = 0;
-  double Throt_Kd = 1;
+  double Throt_Kp = 0.2;
+  double Throt_Ki = 0.001;
+  double Throt_Kd = 0.02;
   double Throt_output_lim_max = 1.0;
   double Throt_output_lim_min = -1.0;
 
