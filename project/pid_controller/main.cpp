@@ -316,19 +316,21 @@ int main ()
           // we calculate the taregt yaw by getting tan inverse of the opposite(target y - actual y)
           //                devided by the adjacent (target x - actual y), and then convert it to radians
           int index = 0;
-          double dist_min;
-          for (int i = 0; i < x_points.size(); ++i) {
+          double dist_min = numeric_limits<double>::infinity();
+          for (int i = 1; i < x_points.size(); ++i) {
                 // calc distance between planner points and vehicle position
-                double distance = sqrt(pow((x_position - x_points[i]), 2) + pow((y_position - y_points[i]), 2);)
+                double distance = sqrt(pow((x_points[i] - x_position), 2) +
+                                       pow((y_points[i]) - y_position, 2));
 
-                if (i == 0) {
+                if (i == 1) {
                   dist_min = distance;
-                } else {
-                  // Check if new dist is less than existing min distance
-                  if (distance < dist_min) {
-                    index = i;
-                    dist_min = distance;
-                  }
+                }
+                else {
+                    // Check if new dist is less than existing min distance
+                    if (distance < dist_min) {
+                        index = i + 1;
+                        dist_min = distance;
+                    }
                 }
           }
           error_steer = yaw - atan((y_points[index] - y_position)/(x_points[index] - x_position)) * M_PI/180.0;
@@ -366,7 +368,7 @@ int main ()
           **/
           // modify the following line for step 2
           // the error_throttle is equal to the target velocity minus the actual velocity
-          error_throttle = velocity - v_points[index];
+          error_throttle = v_points[index] - velocity;
 
 
 
