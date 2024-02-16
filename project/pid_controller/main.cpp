@@ -315,7 +315,7 @@ int main ()
           // the error_steer is equal to the target yaw minus the actual yaw
           // we calculate the taregt yaw by getting tan inverse of the opposite(target y - actual y)
           //                devided by the adjacent (target x - actual y), and then convert it to radians
-          error_steer = atan((y_points.back() - y_position)/(x_points.back() - x_position)) * M_PI/180.0 - yaw;
+          error_steer = yaw - atan((y_points.back() - y_position)/(x_points.back() - x_position)) * M_PI/180.0;
 
           /**
           * TODO (step 3): uncomment these lines
