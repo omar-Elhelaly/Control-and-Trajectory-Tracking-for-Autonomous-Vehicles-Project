@@ -220,7 +220,7 @@ int main ()
   **/
   double Steer_Kp = 0.2;
   double Steer_Ki = 0.001;
-  double Steer_Kd = 0.03;
+  double Steer_Kd = 0.8;
   double Steer_output_lim_max = 1.2;
   double Steer_output_lim_min = -1.2;
 
@@ -228,9 +228,9 @@ int main ()
   /**
   * TODO (Step 1): create pid (pid_throttle) for throttle command and initialize values
   **/
-  double Throt_Kp = 0.5;
+  double Throt_Kp = 0.2;
   double Throt_Ki = 0.001;
-  double Throt_Kd = 0.05;
+  double Throt_Kd = 0.02;
   double Throt_output_lim_max = 1.0;
   double Throt_output_lim_min = -1.0;
 
@@ -313,18 +313,12 @@ int main ()
           * TODO (step 3): compute the steer error (error_steer) from the position and the desired trajectory
           **/
           // the error_steer is equal to the target yaw minus the actual yaw
-          // we calculate the taregt yaw by getting tan inverse of the opposite(target y - actual y)
-          //                devided by the adjacent (target x - actual y), and then convert it to radians
-          // int indx = 0;
-          //double dist_min = numeric_limits<double>::infinity();       [v_points.size()- 1]
+          // we calculate the taregt yaw by using angle_between_points() function
+          
           cout << "(x_points.front(), y_points.front() = ("<<x_points.front()<<", "<<y_points.front()<<")\n";
           cout << "(x_position, y_position) = ("<<x_position<<", "<<y_position<<") \n";
           /* for (int i = 0; i < x_points.size(); ++i) {
                 cout<<"("<<x_points[i]<<", "<<y_points[i]<<")\n";
-          }
-          cout << "(spirals_x, spirals_y) = \n";
-          for (int i = 0; i < spirals_x.size(); ++i) {
-                cout << "(" << spirals_x[i] << ", " << spirals_y[i] << ")\n";
           }*/
           error_steer = angle_between_points(x_position, y_position, x_points.front(), y_points.front()) - yaw;
 
