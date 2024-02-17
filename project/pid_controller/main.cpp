@@ -218,9 +218,9 @@ int main ()
   /**
   * TODO (Step 1): create pid (pid_steer) for steer command and initialize values
   **/
-  double Steer_Kp = 0.2;
-  double Steer_Ki = 0.001;
-  double Steer_Kd = 0.02;
+  double Steer_Kp = 2.0;
+  double Steer_Ki = 0.1;
+  double Steer_Kd = 1.0;
   double Steer_output_lim_max = 1.2;
   double Steer_output_lim_min = -1.2;
 
@@ -228,9 +228,9 @@ int main ()
   /**
   * TODO (Step 1): create pid (pid_throttle) for throttle command and initialize values
   **/
-  double Throt_Kp = 0.2;
-  double Throt_Ki = 0.001;
-  double Throt_Kd = 0.02;
+  double Throt_Kp = 2.0;
+  double Throt_Ki = 0.1;
+  double Throt_Kd = 1.0;
   double Throt_output_lim_max = 1.0;
   double Throt_output_lim_min = -1.0;
 
@@ -333,7 +333,7 @@ int main ()
                     }
                 }
           }*/
-          error_steer = yaw - angle_between_points(x_position, y_position, x_points.back(), y_points.back());
+          error_steer = angle_between_points(x_position, y_position, x_points.front(), y_points.front()) - yaw;
 
           /**
           * TODO (step 3): uncomment these lines
@@ -368,7 +368,7 @@ int main ()
           **/
           // modify the following line for step 2
           // the error_throttle is equal to the target velocity minus the actual velocity
-          error_throttle = v_points.back() - velocity;
+          error_throttle = velocity - v_points.front();
 
 
 
