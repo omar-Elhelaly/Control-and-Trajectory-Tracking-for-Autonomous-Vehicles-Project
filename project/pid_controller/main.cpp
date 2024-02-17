@@ -230,7 +230,7 @@ int main ()
   **/
   double Throt_Kp = 0.15;
   double Throt_Ki = 0.001;
-  double Throt_Kd = 0.07;
+  double Throt_Kd = 0.01;
   double Throt_output_lim_max = 1.0;
   double Throt_output_lim_min = -1.0;
 
@@ -314,6 +314,8 @@ int main ()
           **/
           // the error_steer is equal to the target yaw minus the actual yaw
           // we calculate the taregt yaw by using angle_between_points() function
+          // I've plotted the x_points, y_points vectors values and I've found that the 1st point in them is always
+          //  the closest point to the car current location
           
           cout << "(x_points.front(), y_points.front() = ("<<x_points.front()<<", "<<y_points.front()<<")\n";
           cout << "(x_position, y_position) = ("<<x_position<<", "<<y_position<<") \n";
