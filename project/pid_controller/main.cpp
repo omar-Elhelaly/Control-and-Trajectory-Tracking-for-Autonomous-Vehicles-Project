@@ -218,9 +218,9 @@ int main ()
   /**
   * TODO (Step 1): create pid (pid_steer) for steer command and initialize values
   **/
-  double Steer_Kp = 2.0;
-  double Steer_Ki = 0.1;
-  double Steer_Kd = 1.0;
+  double Steer_Kp = 0.2;
+  double Steer_Ki = 0.001;
+  double Steer_Kd = 0.8;
   double Steer_output_lim_max = 1.2;
   double Steer_output_lim_min = -1.2;
 
@@ -228,9 +228,9 @@ int main ()
   /**
   * TODO (Step 1): create pid (pid_throttle) for throttle command and initialize values
   **/
-  double Throt_Kp = 2.0;
-  double Throt_Ki = 0.1;
-  double Throt_Kd = 1.0;
+  double Throt_Kp = 0.2;
+  double Throt_Ki = 0.001;
+  double Throt_Kd = 0.02;
   double Throt_output_lim_max = 1.0;
   double Throt_output_lim_min = -1.0;
 
@@ -315,25 +315,17 @@ int main ()
           // the error_steer is equal to the target yaw minus the actual yaw
           // we calculate the taregt yaw by getting tan inverse of the opposite(target y - actual y)
           //                devided by the adjacent (target x - actual y), and then convert it to radians
-          /* int indx = 0;
-          double dist_min = numeric_limits<double>::infinity();
-          for (int i = 1; i < x_points.size(); ++i) {
-                // calc distance between planner points and vehicle position
-                double distance = sqrt(pow((x_points[i] - x_position), 2) +
-                                       pow((y_points[i]) - y_position, 2));
-
-                if (i == 1) {
-                  dist_min = distance;
-                }
-                else {
-                    // Check if new dist is less than existing min distance
-                    if (distance < dist_min) {
-                        indx = i + 1;
-                        dist_min = distance;
-                    }
-                }
-          }*/
-          error_steer = angle_between_points(x_position, y_position, x_points.front(), y_points.front()) - yaw;
+          // int indx = 0;
+          //double dist_min = numeric_limits<double>::infinity();
+          cout << "(x_points, y_points) = \n";
+          for (int i = 0; i < x_points.size(); ++i) {
+                cout<<"("<<x_points[i]<<", "<<y_points[i]<<")\n";
+          }
+          cout << "(spirals_x, spirals_y) = \n";
+          for (int i = 0; i < spirals_x.size(); ++i) {
+                cout << "(" << spirals_x[i] << ", " << spirals_y[i] << ")\n";
+          }
+          error_steer = yaw - angle_between_points(x_position, y_position, x_points.front(), y_points.front());
 
           /**
           * TODO (step 3): uncomment these lines
@@ -368,7 +360,7 @@ int main ()
           **/
           // modify the following line for step 2
           // the error_throttle is equal to the target velocity minus the actual velocity
-          error_throttle = velocity - v_points.front();
+          error_throttle = v_points.front() - velocity;
 
 
 
