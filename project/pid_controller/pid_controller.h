@@ -20,7 +20,6 @@ public:
     double P_cte;
     double I_cte;
     double D_cte;
-    double prev_cte;
 
     /*
     * Coefficients
@@ -72,3 +71,5 @@ public:
 };
 
 #endif //PID_CONTROLLER_H
+
+
