@@ -317,16 +317,16 @@ int main ()
           //                devided by the adjacent (target x - actual y), and then convert it to radians
           // int indx = 0;
           //double dist_min = numeric_limits<double>::infinity();       [v_points.size()- 1]
-          cout << "(x_points[x_points.size()- 1], y_points[y_points.size()- 1]) = ("<<x_points[x_points.size()- 1]<<", "<<y_points[y_points.size()- 1]<<")\n";
-          cout << "(x_points, y_points) = \n";
-          for (int i = 0; i < x_points.size(); ++i) {
+          cout << "(x_points.front(), y_points.front() = ("<<x_points.front()<<", "<<y_points.front()<<")\n";
+          cout << "(x_position, y_position) = ("<<x_position<<", "<<y_position<<") \n";
+          /* for (int i = 0; i < x_points.size(); ++i) {
                 cout<<"("<<x_points[i]<<", "<<y_points[i]<<")\n";
           }
           cout << "(spirals_x, spirals_y) = \n";
           for (int i = 0; i < spirals_x.size(); ++i) {
                 cout << "(" << spirals_x[i] << ", " << spirals_y[i] << ")\n";
-          }
-          error_steer = yaw - angle_between_points(x_position, y_position, x_points.front(), y_points.front());
+          }*/
+          error_steer = angle_between_points(x_position, y_position, x_points.front(), y_points.front()) - yaw;
 
           /**
           * TODO (step 3): uncomment these lines
@@ -361,7 +361,7 @@ int main ()
           **/
           // modify the following line for step 2
           // the error_throttle is equal to the target velocity minus the actual velocity
-          error_throttle = v_points.back() - velocity;
+          error_throttle = v_points.front() - velocity;
 
 
 
