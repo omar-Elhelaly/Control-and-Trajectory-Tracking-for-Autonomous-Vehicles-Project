@@ -323,6 +323,9 @@ int main ()
                 cout<<"("<<x_points[i]<<", "<<y_points[i]<<")\n";
           }*/
           error_steer = angle_between_points(x_position, y_position, x_points.front(), y_points.front()) - yaw;
+          cout << "angle_between_points = " << angle_between_points(x_position, y_position, x_points.front(), y_points.front()) << "\n";
+          cout << "yaw = " << yaw << "\n";
+          cout << "error_steer = " << error_steer << "\n";
 
           /**
           * TODO (step 3): uncomment these lines
@@ -330,6 +333,7 @@ int main ()
           // Compute control to apply
           pid_steer.UpdateError(error_steer);
           steer_output = pid_steer.TotalError();
+          cout << "steer_output = " << steer_output << "\n";
 
           // Save data
           file_steer.seekg(std::ios::beg);
