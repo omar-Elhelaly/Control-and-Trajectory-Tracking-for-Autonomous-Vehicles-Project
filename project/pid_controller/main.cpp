@@ -319,10 +319,11 @@ int main ()
           
           cout << "(x_points.front(), y_points.front() = ("<<x_points.front()<<", "<<y_points.front()<<")\n";
           cout << "(x_position, y_position) = ("<<x_position<<", "<<y_position<<") \n";
-          /* for (int i = 0; i < x_points.size(); ++i) {
+          cout << "(x_points, y_points) = \n";
+          for (int i = 0; i < x_points.size(); ++i) {
                 cout<<"("<<x_points[i]<<", "<<y_points[i]<<")\n";
-          }*/
-          error_steer = angle_between_points(x_position, y_position, x_points.front(), y_points.front()) - yaw;
+          }
+          error_steer = angle_between_points(x_position, y_position, x_points.front(), y_points.front()) - (-yaw);
           cout << "angle_between_points = " << angle_between_points(x_position, y_position, x_points.front(), y_points.front()) << "\n";
           cout << "yaw = " << yaw << "\n";
           cout << "error_steer = " << error_steer << "\n";
