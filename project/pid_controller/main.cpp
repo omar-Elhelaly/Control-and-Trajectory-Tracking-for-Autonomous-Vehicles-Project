@@ -177,7 +177,12 @@ void path_planner(vector<double>& x_points, vector<double>& y_points, vector<dou
     double velocity = spirals_v[best_spiral_idx][index];
     index++;
     x_points.push_back(point_x);
-    y_points.push_back(point_y);
+    if (point_y > 7.5){
+	y_points.push_back(7.5);
+    }
+    else {
+	y_points.push_back(point_y);
+    }
     v_points.push_back(velocity);
   }
 
