@@ -276,6 +276,11 @@ int main ()
           	set_obst(x_obst, y_obst, obstacles, have_obst);
           }
 
+	  cout << "obstacles:\n";
+          for (int o = 0; o < obstacles.size(); o++) {
+                cout << obstacles[o] << "\n";
+          }
+
           State goal;
           goal.location.x = waypoint_x;
           goal.location.y = waypoint_y;
